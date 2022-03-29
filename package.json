@@ -9,7 +9,9 @@
     "start": "next start",
     "test": "NODE_ENV=test jest --watch",
     "test-win": "SET NODE_ENV=test&& jest --watch",
-    "heroku-postbuild": "next build"
+    "heroku-postbuild": "next build",
+    "lint": "eslint --fix",
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -38,14 +40,20 @@
     "waait": "^1.0.5"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "@types/react": "^16.9.38",
     "babel-jest": "^25.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "casual": "^1.6.2",
     "enzyme-to-json": "^3.5.0",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "graphql-tools": "^4.0.7",
     "jest": "^25.1.0",
     "jest-transform-graphql": "^2.1.0",
+    "prettier": "^2.6.1",
     "typescript": "^3.9.5"
   },
   "jest": {
