@@ -1,6 +1,6 @@
 // import React from "react";
-import Link from "next/link";
-import NavStyles from "./styles/NavStyles";
+import Link from 'next/link'
+import NavStyles from './styles/NavStyles'
 
 const Nav = () => {
   return (
@@ -29,7 +29,7 @@ const Nav = () => {
         <a>Account</a>
       </Link>
     </NavStyles>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

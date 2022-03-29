@@ -1,5 +1,5 @@
-import Head from "next/head";
-import React from "react";
+import Head from 'next/head'
+import React from 'react'
 
 const Meta = () => {
   return (
@@ -10,7 +10,7 @@ const Meta = () => {
       <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
       <title>Sick Fits!</title>
     </Head>
-  );
-};
+  )
+}
 
-export default Meta;
+export default Meta

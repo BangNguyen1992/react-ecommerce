@@ -18,13 +18,7 @@ export const CREATE_ITEM_MUTATION = gql`
     $image: String
     $largeImage: String
   ) {
-    createItem(
-      title: $title
-      description: $description
-      price: $price
-      image: $image
-      largeImage: $largeImage
-    ) {
+    createItem(title: $title, description: $description, price: $price, image: $image, largeImage: $largeImage) {
       id
       title
       description
@@ -166,9 +160,7 @@ const CreateItem = (props) => {
             placeholder="Description"
             ref={register({ required: 'Description is required' })}
           />
-          {errors.description && (
-            <ErrorMessage>{errors.description.message}</ErrorMessage>
-          )}
+          {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
         </label>
 
         <label htmlFor="image">

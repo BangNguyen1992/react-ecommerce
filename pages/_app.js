@@ -1,9 +1,9 @@
 // Custom `App` component to initialize pages
 // https://nextjs.org/docs/advanced-features/custom-app
 
-import { ApolloProvider } from "@apollo/client";
-import Page from "../components/Page";
-import withData from "../lib/withData";
+import { ApolloProvider } from '@apollo/client'
+import Page from '../components/Page'
+import withData from '../lib/withData'
 
 const MyApp = ({ Component, pageProps, apollo }) => {
   return (
@@ -12,20 +12,20 @@ const MyApp = ({ Component, pageProps, apollo }) => {
         <Component {...pageProps} />
       </Page>
     </ApolloProvider>
-  );
-};
+  )
+}
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
-  let pageProps = {};
+  let pageProps = {}
   if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
+    pageProps = await Component.getInitialProps(ctx)
   }
   // this exposes the query to the user
-  pageProps.query = ctx.query;
-  return { pageProps };
-};
+  pageProps.query = ctx.query
+  return { pageProps }
+}
 
-export default withData(MyApp);
+export default withData(MyApp)
 
 // import App, { Container } from 'next/app';
 // import Page from '../components/Page';

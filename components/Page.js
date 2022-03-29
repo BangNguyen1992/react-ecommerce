@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import React, { Component, Fragment } from 'react'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-import Header from "./Header";
-import Meta from "./Meta";
+import Header from './Header'
+import Meta from './Meta'
 
 const LIGHT_THEME = {
-  red: "#FF0000",
-  black: "#393939",
-  grey: "#3A3A3A",
-  lightGrey: "#E1E1E1",
-  offWhite: "#EDEDED",
-  maxWidth: "100rem",
-  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)"
-};
+  red: '#FF0000',
+  black: '#393939',
+  grey: '#3A3A3A',
+  lightGrey: '#E1E1E1',
+  offWhite: '#EDEDED',
+  maxWidth: '100rem',
+  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+}
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -39,22 +39,22 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${props => props.theme.black};
+    color: ${(props) => props.theme.black};
   }
-`;
+`
 
 const StyledPage = styled.div`
   background-color: white;
-  color: ${props => props.theme.black};
-`;
+  color: ${(props) => props.theme.black};
+`
 
 const Inner = styled.div`
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${(props) => props.theme.maxWidth};
   margin: 0 auto;
   padding: 2rem;
   /* background-color: red; */
   /* color: black; */
-`;
+`
 
 export default class Page extends Component {
   render() {
@@ -69,6 +69,6 @@ export default class Page extends Component {
           </StyledPage>
         </Fragment>
       </ThemeProvider>
-    );
+    )
   }
 }

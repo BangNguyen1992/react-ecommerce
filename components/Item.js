@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import { Title, ItemStyles, PriceTag } from "./styles";
-import { transformUrlString } from "../lib/utilities";
-import formatMoney from "../lib/formatMoney";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
+import { Title, ItemStyles, PriceTag } from './styles'
+import { transformUrlString } from '../lib/utilities'
+import formatMoney from '../lib/formatMoney'
 
 const Item = ({ item }) => {
   return (
@@ -12,7 +12,7 @@ const Item = ({ item }) => {
       <Title>
         <Link
           href={{
-            pathname: "/item",
+            pathname: '/item',
             query: { name: transformUrlString(item.title), id: item.id },
           }}
         >
@@ -25,7 +25,7 @@ const Item = ({ item }) => {
       <div className="buttonList">
         <Link
           href={{
-            pathname: "/update",
+            pathname: '/update',
             query: { name: transformUrlString(item.title), id: item.id },
           }}
         >
@@ -35,11 +35,11 @@ const Item = ({ item }) => {
         <button>Delete</button>
       </div>
     </ItemStyles>
-  );
-};
+  )
+}
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-};
+}
 
-export default Item;
+export default Item
