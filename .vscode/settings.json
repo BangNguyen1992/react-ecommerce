@@ -18,5 +18,28 @@
   // "vscode_custom_css.imports": [
   //   "/Volumes/Macintosh HD/Users/wesbos/.vscodestyles.css"
   // ],
-  "editor.renderWhitespace": "all"
+  "editor.renderWhitespace": "all",
+  "eslint.alwaysShowStatus": true,
+  "eslint.lintTask.enable": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000000CC",
+    "titleBar.activeBackground": "#FFC600",
+    "titleBar.inactiveBackground": "#FFC600CC"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
 }
