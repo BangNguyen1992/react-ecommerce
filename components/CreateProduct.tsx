@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/client'
 import gql from 'graphql-tag'
-import React, { useState } from 'react'
+import React from 'react'
+import { ALL_PRODUCTS_QUERY } from '../lib/query/allProductsQuery'
 import useForm from '../lib/useForm'
 import DisplayError from './ErrorMessage'
 import Form from './styles/Form'
@@ -41,6 +42,7 @@ export default function CreateProduct() {
 
   const [createProduct, { data, loading, error }] = useMutation(CREATE_PRODUCT_MUTATION, {
     variables: inputs,
+    refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
   })
 
   const fields = [
