@@ -1,14 +1,46 @@
+import { useMutation } from '@apollo/client'
+import gql from 'graphql-tag'
 import React, { useState } from 'react'
 import useForm from '../lib/useForm'
+import DisplayError from './ErrorMessage'
 import Form from './styles/Form'
 
+// GRAPHQL MUTATION
+const CREATE_PRODUCT_MUTATION = gql`
+  mutation CREATE_PRODUCT_MUTATION(
+    $name: String!
+    $description: String!
+    $price: Int!
+    $image: Upload
+  ) {
+    createProduct(
+      data: {
+        name: $name
+        description: $description
+        price: $price
+        status: "DRAFT"
+        image: { create: { image: $image, altText: $name } }
+      }
+    ) {
+      id
+      name
+      price
+      status
+      description
+    }
+  }
+`
+
 export default function CreateProduct() {
-  const [isLoading, setIsLoading] = useState(false)
   const { inputs, handleChange, resetForm } = useForm({
     image: '',
     name: '',
     price: 0,
     description: '',
+  })
+
+  const [createProduct, { data, loading, error }] = useMutation(CREATE_PRODUCT_MUTATION, {
+    variables: inputs,
   })
 
   const fields = [
@@ -38,14 +70,20 @@ export default function CreateProduct() {
     },
   ]
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log(inputs)
+    try {
+      await createProduct()
+      resetForm()
+    } catch {
+      console.error('error', error)
+    }
   }
 
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
-      <fieldset aria-busy={isLoading}>
+      <DisplayError error={error} />
+      <fieldset aria-busy={loading}>
         <label htmlFor="image">
           Image
           <input type="file" id="image" name="image" onChange={handleChange} />
@@ -63,7 +101,7 @@ export default function CreateProduct() {
                 // @ts-expect-error File type doesnt need value
                 value={inputs[name] ?? ''}
                 onChange={handleChange}
-                disabled={isLoading}
+                disabled={loading}
               />
             ) : (
               <textarea
@@ -74,17 +112,13 @@ export default function CreateProduct() {
                 // @ts-expect-error File type doesnt need value
                 value={inputs[name] ?? ''}
                 onChange={handleChange}
-                disabled={isLoading}
+                disabled={loading}
               />
             )}
           </label>
         ))}
 
         <button type="submit">+ Add Product</button>
-
-        <button type="button" onClick={resetForm}>
-          Reset Form
-        </button>
       </fieldset>
     </Form>
   )
