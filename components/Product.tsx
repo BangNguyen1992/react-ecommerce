@@ -23,9 +23,9 @@ export default function Product({
     <ItemStyles>
       <img src={image.publicUrlTransformed} alt={name} />
       <Title>
-        <Link href={`/products/${id}`}>{name}</Link>
+        <Link href={`/product/${id}`}>{name}</Link>
       </Title>
-      <PriceTag>{formatMoney(price / 100)}</PriceTag>
+      <PriceTag>{formatMoney(price)}</PriceTag>
       <p>{description}</p>
     </ItemStyles>
   )
