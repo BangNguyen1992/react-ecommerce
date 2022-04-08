@@ -32,13 +32,14 @@
   },
   "rules": {
     "@typescript-eslint/semi": "off",
+    "no-restricted-exports": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-one-expression-per-line": "off",
-    "no-restricted-exports": "off",
+    "react/jsx-props-no-spreading": "warn",
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",
-    "react/function-component-definition": [2, { "namedComponents": "function-expression" }],
+    "react/function-component-definition": [0, { "namedComponents": "function-expression" }],
     "func-names": ["warn", "as-needed"]
     // "no-unused-vars": "warn",
     // "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],

@@ -32,7 +32,7 @@
     "vue-html": "html",
   },
   "emmet.triggerExpansionOnTab": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "[javascript]": {
     "editor.formatOnSave": false
   },

@@ -9,7 +9,7 @@
     "start": "next start -p 7777",
     "test": "NODE_ENV=test jest --watch",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix & prettier --write ."
   },
   "author": "Bang Nguyen",
   "license": "ISC",
