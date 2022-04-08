@@ -1,6 +1,6 @@
 export default function formatMoney(amount = 0) {
   const options = {
-    styles: 'currency',
+    style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2,
   }
