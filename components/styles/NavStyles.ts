@@ -5,7 +5,7 @@ const NavStyles = styled.ul`
   padding: 0;
   display: flex;
   justify-self: end;
-  font-size: 2rem;
+  font-size: 1.8rem;
   a,
   button {
     padding: 1rem 3rem;
@@ -57,7 +57,7 @@ const NavStyles = styled.ul`
       }
     }
   }
-  @media (max-width: 1300px) {
+  @media (max-width: 1200px) {
     border-top: 1px solid var(--lightGray);
     width: 100%;
     justify-content: center;
