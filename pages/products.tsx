@@ -1,32 +1,13 @@
 import { useQuery } from '@apollo/client'
-import gql from 'graphql-tag'
 import styled from 'styled-components'
 import Product from '../components/Product'
 import { ProductType } from '../type'
+import { ALL_PRODUCTS_QUERY } from '../lib/query/allProductsQuery'
 
 // TYPE DEFINITION
 interface AllProducts {
   allProducts: ProductType[]
 }
-
-// GRAPHQL QUERY
-const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCTS_QUERY {
-    allProducts {
-      id
-      name
-      status
-      price
-      description
-      image {
-        id
-        image {
-          publicUrlTransformed
-        }
-      }
-    }
-  }
-`
 
 // STYLING
 const ProductList = styled.div`
