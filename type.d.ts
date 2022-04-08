@@ -6,6 +6,7 @@ export interface ProductType {
   description?: string
   image: {
     id: string
+    altText?: string
     image: {
       publicUrlTransformed: string
     }

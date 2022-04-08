@@ -19,7 +19,6 @@ const ProductList = styled.div`
 // MAIN COMPONENT
 export default function ProductsPage() {
   const { data, error, loading } = useQuery<AllProducts>(ALL_PRODUCTS_QUERY)
-  console.log('{ data, error, loading }', { data, error, loading })
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error: {error.message}</div>
