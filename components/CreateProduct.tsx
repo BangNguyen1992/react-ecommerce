@@ -1,37 +1,12 @@
 import { useMutation } from '@apollo/client'
-import gql from 'graphql-tag'
 import router from 'next/router'
 import React from 'react'
+import { CREATE_PRODUCT_MUTATION } from '../lib/mutation/createProduct'
 import { ALL_PRODUCTS_QUERY } from '../lib/query/allProductsQuery'
 import useForm from '../lib/useForm'
 import DisplayError from './ErrorMessage'
 import Form from './styles/Form'
 
-// GRAPHQL MUTATION
-const CREATE_PRODUCT_MUTATION = gql`
-  mutation CREATE_PRODUCT_MUTATION(
-    $name: String!
-    $description: String!
-    $price: Int!
-    $image: Upload
-  ) {
-    createProduct(
-      data: {
-        name: $name
-        description: $description
-        price: $price
-        status: "DRAFT"
-        image: { create: { image: $image, altText: $name } }
-      }
-    ) {
-      id
-      name
-      price
-      status
-      description
-    }
-  }
-`
 
 export default function CreateProduct() {
   const { inputs, handleChange, resetForm } = useForm({
@@ -104,7 +79,6 @@ export default function CreateProduct() {
                 name={name}
                 required={required}
                 placeholder={placeholder}
-                // @ts-expect-error File type doesnt need value
                 value={inputs[name] ?? ''}
                 onChange={handleChange}
                 disabled={loading}
@@ -115,7 +89,6 @@ export default function CreateProduct() {
                 name={name}
                 required={required}
                 placeholder={placeholder}
-                // @ts-expect-error File type doesnt need value
                 value={inputs[name] ?? ''}
                 onChange={handleChange}
                 disabled={loading}
