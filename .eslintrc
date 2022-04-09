@@ -38,6 +38,7 @@
     "react/jsx-props-no-spreading": "warn",
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "warn",
+    "react/destructuring-assignment": "off",
     "import/prefer-default-export": "off",
     "react/function-component-definition": [0, { "namedComponents": "function-expression" }],
     "func-names": ["warn", "as-needed"]
