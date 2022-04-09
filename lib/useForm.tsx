@@ -1,9 +1,16 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
-export default function useForm(initial: Record<string, string | number | File> = {}) {
+export default function useForm(initial: Record<string, any | string | number | File> = {}) {
   const [inputs, setInputs] = useState(initial)
+  const initialValues = Object.values(initial).join('')
 
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  useEffect(() => {
+    setInputs(initial)
+  }, [initialValues])
+
+  function handleChange(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) {
     const { name, value, type } = e.target
     let inputValue: string | number | File
 
