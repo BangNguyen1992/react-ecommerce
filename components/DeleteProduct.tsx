@@ -15,6 +15,11 @@ export default function DeleteProduct({ id, name, children }: Props) {
   const { isActive, message, openSnackbar, closeSnackbar } = useSnackbar()
   const [deleteProduct, { loading, error }] = useMutation(DELETE_PRODUCT_MUTATION, {
     variables: { id },
+    // Remove item from Apollo cache
+    update: (cache, payload) => {
+      cache.evict({ id: cache.identify(payload.data.deleteProduct) })
+    },
+    // Refetch all the product again
     refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
   })
 
@@ -25,7 +30,7 @@ export default function DeleteProduct({ id, name, children }: Props) {
         await deleteProduct()
         openSnackbar('Deleted product')
       } catch (err) {
-        alert(err.message)
+        console.error(err.message)
         console.error('Apollo error: ', error)
       }
     }
