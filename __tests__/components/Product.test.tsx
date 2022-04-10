@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { MockedProvider } from '@apollo/react-testing'
 import Product from '../../components/Product'
-import { fakeItem } from '../../lib/testUtils'
+import { fakeItem } from '../../lib/utilities/testUtils'
 
 const mockProduct = fakeItem()
 

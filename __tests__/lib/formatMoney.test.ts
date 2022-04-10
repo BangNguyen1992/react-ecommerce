@@ -1,4 +1,4 @@
-import formatMoney from '../../lib/formatMoney'
+import formatMoney from '../../lib/utilities/formatMoney'
 
 describe('formatMoney function', () => {
   test('should have divided by 100 and have decimal number', () => {

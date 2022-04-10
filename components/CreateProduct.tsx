@@ -3,7 +3,7 @@ import router from 'next/router'
 import React from 'react'
 import { CREATE_PRODUCT_MUTATION } from '../lib/mutation/createProduct'
 import { ALL_PRODUCTS_QUERY } from '../lib/query/allProductsQuery'
-import useForm from '../lib/useForm'
+import useForm from '../lib/custom-hooks/useForm'
 import DisplayError from './ErrorMessage'
 import Form from './styles/Form'
 
