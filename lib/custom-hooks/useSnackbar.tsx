@@ -6,13 +6,16 @@ export default function useSnackbar() {
   const [duration, setDuration] = useState(3000)
 
   useEffect(() => {
-    if (isActive)
-      setTimeout(() => {
-        setIsActive(false)
-      }, duration)
+    let willCloseSnackbar
+    if (isActive) {
+      willCloseSnackbar = setTimeout(() => setIsActive(false), duration)
+    }
+    return () => {
+      clearTimeout(willCloseSnackbar)
+    }
   }, [isActive, duration])
 
-  function openSnackbar(msg: string, dur = 30000) {
+  function openSnackbar(msg: string, dur = 3000) {
     setMessage(msg)
     setDuration(dur)
     setIsActive(true)
