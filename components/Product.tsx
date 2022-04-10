@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
-import formatMoney from '../lib/formatMoney'
+import formatMoney from '../lib/utilities/formatMoney'
 import { ProductType } from '../type'
+import DeleteProduct from './DeleteProduct'
 import ItemStyles from './styles/ItemStyles'
 import PriceTag from './styles/PriceTag'
 import Title from './styles/Title'
@@ -34,8 +35,12 @@ export default function Product({
             query: { id },
           }}
         >
-          Edit
+          <button type="button">Edit</button>
         </Link>
+
+        <DeleteProduct id={id} name={name}>
+          Delete
+        </DeleteProduct>
       </div>
     </ItemStyles>
   )
