@@ -33,6 +33,8 @@
   "rules": {
     "@typescript-eslint/semi": "off",
     "no-restricted-exports": "off",
+    "no-underscore-dangle": "warn",
+    "jsx-a11y/anchor-is-valid": "warn",
     "react/react-in-jsx-scope": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "warn",

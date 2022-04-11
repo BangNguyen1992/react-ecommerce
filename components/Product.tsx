@@ -35,11 +35,11 @@ export default function Product({
             query: { id },
           }}
         >
-          <button type="button">Edit</button>
+          <button type="button">&#128221; Edit</button>
         </Link>
 
         <DeleteProduct id={id} name={name}>
-          Delete
+          &#10060; Delete
         </DeleteProduct>
       </div>
     </ItemStyles>
