@@ -1,7 +1,8 @@
 import { useQuery } from '@apollo/client'
 import Head from 'next/head'
 import Link from 'next/link'
-import React from 'react'
+import router from 'next/router'
+import React, { useEffect, useState } from 'react'
 import { perPage } from '../config'
 import { PAGINATION_QUERY } from '../lib/query/paginationQuery'
 import DisplayError from './ErrorMessage'
@@ -11,31 +12,42 @@ interface Props {
   page: number
 }
 export default function Pagination({ page }: Props) {
+  const [currentPage, setCurrentPage] = useState(page)
   const { data, loading, error } = useQuery<{ _allProductsMeta: { count: number } }>(
     PAGINATION_QUERY,
   )
 
+  const count = data?._allProductsMeta?.count
+  const totalPageCount = Math.ceil(count / perPage)
+
+  useEffect(() => {
+    if (currentPage > totalPageCount) {
+      setCurrentPage(totalPageCount)
+      router.push({
+        pathname: `/products/${totalPageCount}`,
+      })
+    }
+  }, [totalPageCount])
+
   if (loading) return <div>Loading...</div>
   if (error) return <DisplayError error={error.message} />
 
-  const { count } = data._allProductsMeta
-  const totalPageCount = Math.ceil(count / perPage)
   return (
     <PaginationStyles>
       <Head>
         <title>
-          Stick Fits - Page {page} of {totalPageCount}
+          Stick Fits - Page {currentPage} of {totalPageCount}
         </title>
       </Head>
-      <Link href={`/products/${page - 1}`}>
-        <a aria-disabled={page < 2}>🢀 Prev</a>
+      <Link href={`/products/${currentPage - 1}`}>
+        <a aria-disabled={currentPage < 2}>🢀 Prev</a>
       </Link>
       <p>
-        Page {page} of {totalPageCount}{' '}
+        Page {currentPage} of {totalPageCount}
       </p>
       <p>{totalPageCount} pages total</p>
-      <Link href={`/products/${Number(page) + 1}`}>
-        <a aria-disabled={page >= totalPageCount}>Next 🢂</a>
+      <Link href={`/products/${currentPage + 1}`}>
+        <a aria-disabled={currentPage >= totalPageCount}>Next 🢂</a>
       </Link>
     </PaginationStyles>
   )

@@ -30,7 +30,7 @@ export default function Products({ page }: { page: number }) {
   return (
     <ProductList>
       {data.allProducts.map((product) => (
-        <Product key={product.id} product={product} />
+        <Product key={product.id} product={product} page={page} />
       ))}
     </ProductList>
   )

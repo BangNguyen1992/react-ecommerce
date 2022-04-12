@@ -9,6 +9,7 @@ import Title from './styles/Title'
 
 interface Props {
   product: ProductType
+  page: number
 }
 
 export default function Product({
@@ -17,12 +18,13 @@ export default function Product({
     name,
     price,
     description,
-    image: { image },
+    image,
   },
+  page,
 }: Props) {
   return (
     <ItemStyles>
-      <img src={image.publicUrlTransformed} alt={name} />
+      <img src={image?.image.publicUrlTransformed} alt={name} />
       <Title>
         <Link href={`/product/${id}`}>{name}</Link>
       </Title>
@@ -38,7 +40,7 @@ export default function Product({
           <button type="button">&#128221; Edit</button>
         </Link>
 
-        <DeleteProduct id={id} name={name}>
+        <DeleteProduct id={id} name={name} page={page}>
           &#10060; Delete
         </DeleteProduct>
       </div>
