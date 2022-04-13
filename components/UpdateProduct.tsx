@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client'
 import React, { FormEvent } from 'react'
-import { UPDATE_PRODUCT_MUTATION } from '../lib/mutation/updateProduct'
+import { UPDATE_PRODUCT_MUTATION } from '../lib/mutation/updateProductMutation'
 import { SINGLE_PRODUCT_QUERY } from '../lib/query/singleProductQuery'
 import useForm from '../lib/custom-hooks/useForm'
 import { ProductType } from '../type'

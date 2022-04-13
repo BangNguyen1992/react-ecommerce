@@ -4,6 +4,7 @@ import NavStyles from './styles/NavStyles'
 
 export default function Nav() {
   const user = useUser()
+
   return (
     <NavStyles>
       <Link href="/products">Products</Link>
@@ -14,9 +15,7 @@ export default function Nav() {
           <Link href="/account">Account</Link>
         </>
       )}
-      {!user && (
-        <Link href="/signin">Signin</Link>
-      )}
+      {!user && <Link href="/signin">Signin</Link>}
     </NavStyles>
   )
 }
