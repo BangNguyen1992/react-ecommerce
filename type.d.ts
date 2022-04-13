@@ -23,3 +23,9 @@ export interface ProductType {
 //   description?: string
 //   // image?: ProductType['image']
 // }
+
+export interface AuthenticatedItem {
+  id: string
+  name: string
+  email: string
+}
