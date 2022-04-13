@@ -1,9 +1,10 @@
 import { useMutation } from '@apollo/client'
 import React, { useState } from 'react'
+import router from 'next/router'
 import DisplayError from './ErrorMessage'
 import Form from './styles/Form'
 import useForm from '../lib/custom-hooks/useForm'
-import { SIGNIN_MUTATION } from '../lib/mutation/signinMutation'
+import { SIGNIN_MUTATION } from '../lib/mutation/signInMutation'
 import { CURRENT_USER_QUERY } from '../lib/query/currentUserQuery'
 
 export default function SignIn() {
@@ -20,7 +21,11 @@ export default function SignIn() {
       const { data } = await authenticateUserWithPassword()
       const errMessage = data?.authenticateUserWithPassword?.message
 
-      setError(errMessage)
+      if (errMessage) {
+        setError(errMessage)
+        return
+      }
+      router.push('/products')
     } catch (networkError) {
       console.error('SignIn: ', networkError)
     }
