@@ -21,13 +21,15 @@ export default function Pagination({ page }: Props) {
   const totalPageCount = Math.ceil(count / perPage)
 
   useEffect(() => {
-    if (currentPage > totalPageCount) {
+    if (page > totalPageCount) {
       setCurrentPage(totalPageCount)
       router.push({
         pathname: `/products/${totalPageCount}`,
       })
+    } else {
+      setCurrentPage(page)
     }
-  }, [totalPageCount])
+  }, [page])
 
   if (loading) return <div>Loading...</div>
   if (error) return <DisplayError error={error.message} />
